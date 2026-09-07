@@ -27,14 +27,31 @@ onto a top-down pitch radar.
 | `player-team-segmentation.py` | Main analysis/visualisation loop. |
 | `train.py` | Trains a YOLO model on the Roboflow football-players dataset. |
 | `custom_bytetrack.yaml` | ByteTrack tracker config used by the main script. |
+| `requirements.txt` | Python dependencies (`ultralytics`, `opencv-python`, `numpy`). |
 | `pitch_calibration.json` | (Optional, not committed) manual pitch calibration. |
 
 ## Setup
 
+Python 3.12 is expected (see `.python-version`). Create a virtual environment and
+install the dependencies:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install ultralytics opencv-python numpy
+pip install -r requirements.txt
+```
+
+`ultralytics` pulls in PyTorch automatically. If you need GPU acceleration, install
+a CUDA-enabled PyTorch build first (matching your driver/CUDA version), then run the
+requirements install so the rest resolve against it:
+
+> This project was developed and tested on an NVIDIA GTX 1080 Ti (11 GB VRAM).
+> `train.py` sets `batch=4` and `amp=False` to stay within its VRAM limits and avoid
+> cuDNN init issues; adjust these if you run on different hardware.
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt
 ```
 
 ## Usage
