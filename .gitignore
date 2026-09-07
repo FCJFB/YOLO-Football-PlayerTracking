@@ -1,0 +1,9 @@
+# Videos
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Model weights
+*.pt

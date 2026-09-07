@@ -1,0 +1,7 @@
+tracker_type: bytetrack
+track_high_thresh: 0.20    # Lower threshold for initial tracking
+track_low_thresh: 0.08     # Keep small/distant detections
+new_track_thresh: 0.15     # Confidence required to register a new ID
+track_buffer: 40           # Keep tracks alive during camera movement
+match_thresh: 0.70         # IoU association threshold
+fuse_score: True           # Required by modern Ultralytics ByteTrack core
